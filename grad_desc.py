@@ -21,19 +21,19 @@ def func3(x):
 def gradient_func3(x):
     return 2*x - 2
 
-def gradient_descent(start, gradient, learn_rate, max_iter, tol=0.01):
-    steps = [start]
+def gradient_descent(start, gradient_function, learning_rate, max_iterations, tolerance = 0.01):
     x = start
-
-    for _ in range(max_iter):
-        diff = learn_rate * gradient(x)
-
-        if np.abs(diff) < tol:
-            break
-
-        x = x - diff
+    steps = [x]
+    
+    for _ in range(max_iterations):
+        gradient = gradient_function(x)
+        x -= learning_rate * gradient
         steps.append(x)
-    return steps,x
+        
+        if abs(gradient) < tolerance:
+            break
+    
+    return steps, x
 
 history, result = gradient_descent(9, gradient_func1, 0.01, 100)
 
@@ -44,7 +44,7 @@ x_vals = np.linspace(-10, 15, 400)
 y_vals = func1(x_vals)
 
 fig, ax = plt.subplots()
-ax.plot(x_vals, y_vals, label='Function: $f(x) = x^2 - 4x + 1$')
+ax.plot(x_vals, y_vals, label='Function: $f(x) = x^2 - 2x + 3$')
 line, = ax.plot([], [], 'ro-', label='Gradient Descent Path')
 min_point, = ax.plot([], [], 'go', label='Minimum')
 ax.set_xlabel('x')
@@ -53,7 +53,7 @@ ax.set_title('Gradient Descent Visualization')
 ax.legend()
 ax.grid()
 ax.set_xlim(-6, 10)
-ax.set_ylim( -10, 30)
+ax.set_ylim( -5, 60)
 
 def init():
     line.set_data([], [])
@@ -71,4 +71,4 @@ ani = FuncAnimation(fig, animate, frames=len(history), init_func=init, blit=True
 
 plt.show()
 
-# ani.save('grad_desc.gif')
+ani.save('grad_desc.gif')
