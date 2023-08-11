@@ -25,17 +25,6 @@ learning_rate = 0.01
 fig = plt.figure()
 ax = plt.subplot(projection="3d", computed_zorder=False)
 
-# for i in range(100):
-#     X_derivitive, Y_derivitive = calculate_gradient(current_position[0], current_position[1])
-#     X_new, Y_new = current_position[0] - learning_rate * X_derivitive, current_position[1] - learning_rate * Y_derivitive
-#     Z_new = z_function(X_new, Y_new)
-#     current_position = (X_new, Y_new, Z_new)
-
-#     ax.plot_surface(X, Y, Z, cmap='viridis', zorder = 0)
-#     ax.scatter(current_position[0], current_position[1], current_position[2], color='red', zorder=1)
-#     plt.pause(0.01)
-#     ax.clear()
-
 def update(frame):
     global current_position1
     global current_position2
@@ -68,6 +57,6 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=100, repeat=False)
 
 # Save the animation as a GIF
-ani.save('optimization_animation.gif', writer='pillow')
+ani.save('./images/optimization_animation.gif', writer='pillow')
 
 plt.show()
