@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-def func1(x):
-    return x**2-4*x+1
+# def func1(x):
+#     return x**2-4*x+1
 
-def gradient_func1(x):
-    return 2*x-4
+# def gradient_func1(x):
+#     return 2*x-4
 
 def func2(x):
     return x**4-2*x**3+3
@@ -15,11 +15,11 @@ def func2(x):
 def gradient_func2(x):
     return 4*x**3-6*x**2
 
-def func3(x):
-    return x**2 - 2*x + 3
-
-def gradient_func3(x):
-    return 2*x - 2
+def func1(x):
+    return x**3-2*x**2+2
+    
+def gradient_func1(x):
+    return 3*x**2-4*x+2 
 
 def gradient_descent(start, gradient_function, learning_rate, max_iterations, tolerance = 0.01):
     x = start
@@ -35,7 +35,8 @@ def gradient_descent(start, gradient_function, learning_rate, max_iterations, to
     
     return steps, x
 
-history, result = gradient_descent(9, gradient_func1, 0.01, 100)
+# history, result = gradient_descent(9, gradient_func1, 0.01, 100)
+history, result = gradient_descent(9, gradient_func1,1.0, 100)
 
 # print(history, result)
 
@@ -71,4 +72,6 @@ ani = FuncAnimation(fig, animate, frames=len(history), init_func=init, blit=True
 
 plt.show()
 
-ani.save('grad_desc.gif')
+# ani.save('grad_desc0.01.gif')
+# ani.save('grad_desc0.9.gif')
+ani.save('grad_desc1.0.gif')
