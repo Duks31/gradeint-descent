@@ -57,6 +57,6 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=100, repeat=False)
 
 # Save the animation as a GIF
-ani.save('./images/optimization_animation.gif', writer='pillow')
+ani.save('./images/optimization_animation1.gif', writer='pillow')
 
 plt.show()
